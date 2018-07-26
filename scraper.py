@@ -28,5 +28,6 @@ class Scraper:
 
 # s = Scraper()
 
-s = Scraper()
-print(s.tickers())
+if __name__ == '__main__':
+    s = Scraper()
+    s.run()
