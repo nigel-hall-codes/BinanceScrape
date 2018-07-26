@@ -17,7 +17,6 @@ def store_data(timestamp, price, symbol):
         INSERT INTO binance_pricing (symbol, price, timestamp)
         VALUES ("{}", {}, {});
     """.format(symbol, price, timestamp)
-    print(insert_price)
     cursor.execute(select_database)
     cursor.execute(insert_price)
     cnx.commit()

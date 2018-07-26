@@ -16,11 +16,11 @@ class Scraper:
             try:
                 tickers = self.client.get_all_tickers()
                 server_time = self.client.get_server_time()['serverTime']
-                print(server_time)
+
                 for t in tickers:
                     if t['symbol'] in ["ETHUSDT", "BTCUSDT"]:
-                        print(t['symbol'], ": ", t['price'])
-                        models.store_data( int(server_time), float(t['price']), t['symbol'])
+
+                        models.store_data(int(server_time), float(t['price']), t['symbol'])
                 time.sleep(1)
             except Exception as e:
                 print(e)
