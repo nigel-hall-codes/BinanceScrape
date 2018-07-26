@@ -17,25 +17,26 @@ create_table = """
       create table PRICE2 (
       Symbol VARCHAR(255),
       Price FLOAT(7),
-      Ti INTEGER);  
-"""
-
-create_database = """
-    create database CRYPTO;
-"""
-
-insert_crypto = """
-    INSERT INTO PRICE2 (symbol, price, Ti) 
-    VALUES ("ETHUSDT", 486.006, 1);
+      Ti INTEGE);  
 """
 
 
-select_crypto = """
-    select * from PRICE2;
-"""
-import pandas as pd
 
-print(pd.read_sql(select_crypto, cnx))ls
+
+
+def store_data(timestamp, price, symbol):
+
+    select_database = "USE CRYPTO;"
+
+
+    insert_price = """
+        INSERT INTO binance_pricing (symbol, price, timestamp)
+        VALUES ("{}", {}, {});
+    """.format(symbol, price, timestamp)
+    print(insert_price)
+    cursor.execute(select_database)
+    cursor.execute(insert_price)
+    cnx.commit()
 
 # cursor.execute(insert_crypto)
 # cnx.commit()

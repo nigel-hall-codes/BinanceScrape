@@ -1,9 +1,7 @@
 from binance.client import Client
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 import datetime
 import time
+import models
 
 
 
@@ -16,11 +14,12 @@ class Scraper:
     def run(self):
         while True:
             tickers = self.client.get_all_tickers()
-            server_time = self.client.get_server_time()
+            server_time = self.client.get_server_time()['serverTime']
             print(server_time)
             for t in tickers:
                 if t['symbol'] in ["ETHUSDT", "BTCUSDT"]:
                     print(t['symbol'], ": ", t['price'])
+                    models.store_data( int(server_time), float(t['price']), t['symbol'])
             time.sleep(1)
 
     def tickers(self):
