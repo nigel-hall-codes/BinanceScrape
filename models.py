@@ -5,7 +5,7 @@ cnx = pymysql.connect(
     port=3306,
     user='root',
     password='shutupPb0y',
-    database="CRYPTO"df
+    database="CRYPTO"
 )
 
 cursor = cnx.cursor()
