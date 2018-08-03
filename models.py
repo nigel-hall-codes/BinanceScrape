@@ -28,4 +28,7 @@ def create_pricing_table():
         CREATE TABLE binance_pricing_1sec (timestamp BIGINT, symbol VARCHAR(10),lastprice FLOAT, lastqty FLOAT, 
         askprice FLOAT, askqty FLOAT, bidprice FLOAT, bidqty FLOAT);
     """
+    cursor.execute(select_database)
+    cursor.execute(create_table_q)
+    cnx.commit()
 
